@@ -20,12 +20,33 @@ document.addEventListener("DOMContentLoaded", () => {
 
         const spotsLeft = details.max_participants - details.participants.length;
 
+        // Replace card innerHTML to include participants section
         activityCard.innerHTML = `
           <h4>${name}</h4>
           <p>${details.description}</p>
           <p><strong>Schedule:</strong> ${details.schedule}</p>
           <p><strong>Availability:</strong> ${spotsLeft} spots left</p>
+          <div class="participants">
+            <strong>Participants:</strong>
+            <ul class="participants-list"></ul>
+          </div>
         `;
+
+        // Populate participants list (pretty, bulleted). Show a placeholder if empty.
+        const participantsList = activityCard.querySelector(".participants-list");
+        if (details.participants && details.participants.length > 0) {
+          // Optionally sort alphabetically for nicer display
+          details.participants.slice().sort().forEach((p) => {
+            const li = document.createElement("li");
+            li.textContent = p;
+            participantsList.appendChild(li);
+          });
+        } else {
+          const li = document.createElement("li");
+          li.textContent = "No participants yet";
+          li.className = "no-participants";
+          participantsList.appendChild(li);
+        }
 
         activitiesList.appendChild(activityCard);
 
