@@ -19,6 +19,27 @@
           <!-- Activities will be loaded here -->
           <p>Loading activities...</p>
         </div>
+
+        <!-- Template for an activity card: app.js can clone this and fill fields -->
+        <template id="activity-template">
+          <article class="activity-card">
+            <h4 class="activity-title"></h4>
+            <p class="activity-description"></p>
+            <p class="activity-schedule"></p>
+
+            <!-- Participants section -->
+            <div class="participants-section">
+              <div class="participants-header">
+                <strong>Participants</strong>
+                <span class="participants-count">0</span>
+              </div>
+              <ul class="participants-list">
+                <!-- list items like: <li>name@school.edu</li> -->
+              </ul>
+              <p class="participants-empty hidden">No participants yet.</p>
+            </div>
+          </article>
+        </template>
       </section>
 
       <section id="signup-container">
